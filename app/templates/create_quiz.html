@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>Add question</p>
+
+<form method="post" name="create_question">
+	{{form.hidden_tag()}}
+	<label>Question Text:</label><br>	
+	{{ form.question_text }}
+	<br>
+	<label>Option A:</label><br>
+	{{ form.oA }}<br>
+	<label>Option B:</label><br>
+	{{ form.oB }}<br>
+	<label>Option C:</label><br>
+	{{ form.oC }}<br>
+	<label>Option D:</label><br>
+	{{ form.oD }}<br>
+	<br>
+	<label>Correct Answer:</label>
+	<p> {{ form.correct_answer }} </p>
+	<br>
+	<label>Category:</label>
+	{{ form.category }}
+	<br>
+	<input type="submit"></input>
+</form>
+
+{% endblock %}
