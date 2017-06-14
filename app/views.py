@@ -1,7 +1,7 @@
 from flask import render_template, session
 from flask import request, redirect, url_for
 from app import app, db, questions
-from .questions import question,quiz
+from .questions import question,quiz, response
 from .forms import Create_quiz
 from .forms import Display_question, Add_quiz
 
@@ -64,7 +64,7 @@ def display_question():
 			form.submission.choices = [(q.option1, q.option1), (q.option2, q.option2), (q.option3, q.option3), (q.option4, q.option4)]
 			session['question_id']=q.question_id
 			session['correct_answer']=q.answer
-			return render_template("display_question.html", q = q, quiz_name=session['quiz_nzme'], form=form)
+			return render_template("display_question.html", q = q, quiz_name=session['quiz_name'], form=form)
 
 		else:
 			session['quiz_id']=-1;
@@ -90,6 +90,6 @@ def create_quiz():
 		db.session.add(q)
 		db.session.commit()
 		session['quiz_name']=quiz_name
-		session['quiz_id'] = questions.quiz.query.filter_by(name=quiz_name).first()
+		session['quiz_id'] = questions.quiz.query.filter_by(name=quiz_name).first().quiz_id
 		return redirect(url_for('display_question')) 
 	return render_template("add_quiz.html", title = "create quiz", form=form)
