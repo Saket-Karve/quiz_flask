@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>Quiz</p>
+
+<form method="post" name="create_quiz">
+	{{form.hidden_tag()}}
+		<b><p>{{ form.name }}</p></b><br>	
+	<input type="submit" ></input>
+</form>
+
+{% endblock %}
