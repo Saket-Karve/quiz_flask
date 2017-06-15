@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>Add question</p>
+<p>Add question to {{ quiz_name }}</p>
 
 <form method="post" name="create_question">
 	{{form.hidden_tag()}}
-	<label>Question Text:</label><br>	
+	<label>Question Text:</label><br>
 	{{ form.question_text }}
 	<br>
 	<label>Option A:</label><br>

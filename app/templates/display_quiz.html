@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>Select Quiz</p>
+
+<form method="post" name="display_question">
+	{{form.hidden_tag()}}
+		{{ form.name }}
+	<input type="submit" ></input>
+</form>
+
+{% endblock %}

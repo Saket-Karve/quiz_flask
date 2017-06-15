@@ -17,4 +17,7 @@ class Display_question(Form):
 	submission = RadioField('submission')
 # form for creating a quiz
 class Add_quiz(Form):
-	name=StringField('name') 
+	name=StringField('name')
+
+class Display_quiz(Form):
+	name = RadioField('name')
