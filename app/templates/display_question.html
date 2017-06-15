@@ -5,9 +5,12 @@
 
 <form method="post" name="display_question">
 	{{form.hidden_tag()}}
-		<b><p>{{ q.q_text }}</p></b><br>	
+		<b><p>{{ q.q_text }}</p></b><br>
 		{{ form.submission }}
-	<input type="submit" ></input>
+		{% for message in form.submission.errors %}
+		         <div>{{ message }}</div>
+		      {% endfor %}
+	<input type="submit" value="SUBMIT"></input>
 </form>
 
 {% endblock %}

@@ -27,7 +27,7 @@ def index():
 @app.route('/addquestions', methods=['GET', 'POST'])
 def quiz_form():
 	form = Create_quiz() # Fetch appropriate form from forms.py
-	if request.method == "POST":
+	if request.method == "POST" and form.validate():
 		#collecting data from forms.py
 		que=form.question_text.data #collect the entered question text
 		option_A=form.oA.data #collect entered option A text
@@ -48,6 +48,10 @@ def quiz_form():
         	q=question(quiz_id = session['quiz_id'],q_text=que,option1=option_A,option2=option_B,option3=option_C,option4=option_D,answer=correct_answer,category=category)# Create object of class question from questions.py
         	db.session.add(q) # Add object q to db.session
         	db.session.commit() # Commit changes to app.db
+		if request.form['submit'] == 'ADD':
+            		return redirect(url_for('quiz_form'))
+		elif request.form['submit'] == 'SUBMIT':
+			return redirect(url_for('display_quiz'))
     	return render_template("create_quiz.html", title = "Add Question", quiz_name = session['quiz_name'], form=form) # Render form template
 @app.route('/displayquestion', methods=['GET', 'POST'])
 def display_question():
@@ -92,7 +96,7 @@ def display_question():
 @app.route('/create_quiz', methods=['GET', 'POST'])
 def create_quiz():
 	form = Add_quiz()
-	if request.method == "POST":
+	if request.method == "POST" and form.validate():
 		quiz_name=form.name.data
 		q=quiz(name=quiz_name)
 		db.session.add(q)

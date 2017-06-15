@@ -6,7 +6,12 @@
 <form method="post" name="display_question">
 	{{form.hidden_tag()}}
 		{{ form.name }}
-	<input type="submit" ></input>
+    {% for message in form.name.errors %}
+             <div>{{ message }}</div>
+          {% endfor %}
+
+
+	<input type="submit" value="ATTEMPT"></input>
 </form>
 
 {% endblock %}

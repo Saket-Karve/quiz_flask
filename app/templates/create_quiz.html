@@ -7,23 +7,49 @@
 	{{form.hidden_tag()}}
 	<label>Question Text:</label><br>
 	{{ form.question_text }}
+	{% for message in form.question_text.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+
 	<br>
 	<label>Option A:</label><br>
-	{{ form.oA }}<br>
+	{{ form.oA }}
+	{% for message in form.oA.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
 	<label>Option B:</label><br>
-	{{ form.oB }}<br>
+	{{ form.oB }}
+	{% for message in form.oB.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
 	<label>Option C:</label><br>
-	{{ form.oC }}<br>
+	{{ form.oC }}
+	{% for message in form.oC.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
+<br>
 	<label>Option D:</label><br>
-	{{ form.oD }}<br>
+	{{ form.oD }}
+	{% for message in form.oD.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}<br>
 	<br>
 	<label>Correct Answer:</label>
-	<p> {{ form.correct_answer }} </p>
+	<p> {{ form.correct_answer }}
+		{% for message in form.correct_answer.errors %}
+		         <div>{{ message }}</div>
+		      {% endfor %}</p>
 	<br>
 	<label>Category:</label>
 	{{ form.category }}
+	{% for message in form.category.errors %}
+	         <div>{{ message }}</div>
+	      {% endfor %}
 	<br>
-	<input type="submit"></input>
+	<input type="submit" name="submit" value="ADD"></input>
+	<input type="submit" name="submit" value="SUBMIT"></input>
 </form>
 
 {% endblock %}
