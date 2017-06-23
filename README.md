@@ -1,10 +1,10 @@
-###################Add plugin to a pybossa###################### 
+## Add plugin to a pybossa
 
-plugins are used to add your own custome feature to a running pybossa server without the need of touching the server code.
+Plugins are used to add your own custome feature to a running pybossa server without the need of modifying the server code.
 
-pybossa plugins are written in flask.
+PyBossa plugins are written in flask.
 
-####################User Evaluation Plugin ####################
+## User Evaluation Plugin
 
 put all your files into a folder and put it inside the plugin folder of pybossa server. our folder name is quiz which has following heirarchy
 
