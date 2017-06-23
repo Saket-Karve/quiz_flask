@@ -5,6 +5,7 @@ This application helps you create your own quiz and publish it to be solved by r
 ## Creating a Quiz
 
 To create a quiz, you just need to follow the appropriate link. This will redirect you to a page asking for the name of the quiz. Then proceed to adding questions to your quiz.
+
 __Questions in the quiz can have the following fields__,
 - Question Text [Mandatory]
 - Multimedia requirred for the question (Image/audia/video/PDF) [Optional]
@@ -12,7 +13,7 @@ __Questions in the quiz can have the following fields__,
 - Correct Answer [Mandatory]
 - Category (To tag a question into a category to facilitate evaluation) [Mandatory]
 
-Add as many questions you want and clickon submit once done.
+Add as many questions you want and click on *submit* once done.
 
 ## Attempting a Quiz
 
@@ -25,3 +26,18 @@ Add as many questions you want and clickon submit once done.
 - The creator of the quiz can view user responses.
 - The system will evaluate user performance according to the category and display respective statistics.
 - The user who has attempted the quiz only gets to see his or her score.
+
+## Future updates required
+
+- Edit question option to be added
+- Support for more multi-media formats
+- Allow users to navigate to any question while attempting
+- Imporove GUI for better user experience
+
+## Contribute
+
+If you wish to contribute to the project, 
+- Fork the repository.
+- Make your changes to a seperate branch.
+- Make a pull request.
+- Changes will be reviewed and merged into the repository.
