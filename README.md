@@ -1,54 +1,27 @@
-## Add plugin to a pybossa
+## Quiz Module Flask
 
-Plugins are used to add your own custome feature to a running pybossa server without the need of modifying the server code.
+This application helps you create your own quiz and publish it to be solved by registered users. Users can select a quiz from the available to attempt. Users will be evaluated based on their performance in every category of questions.
 
-PyBossa plugins are written in flask.
+## Creating a Quiz
 
-## User Evaluation Plugin
+To create a quiz, you just need to follow the appropriate link. This will redirect you to a page asking for the name of the quiz. Then proceed to adding questions to your quiz.
+__Questions in the quiz can have the following fields__,
+- Question Text [Mandatory]
+- Multimedia requirred for the question (Image/audia/video/PDF) [Optional]
+- Four options [Mandatory]
+- Correct Answer [Mandatory]
+- Category (To tag a question into a category to facilitate evaluation) [Mandatory]
 
-put all your files into a folder and put it inside the plugin folder of pybossa server. our folder name is quiz which has following heirarchy
+Add as many questions you want and clickon submit once done.
 
-quiz
-|-- __init__.py
-|-- models.py
-|-- info.json
-|-- forms.py
-|-- config.py
-|-- views.py
-|-- templates
-    |-- add_quiz.html
-    |-- base.html
-    |-- create_quiz.html
-    |-- display_question.html
-    |-- display_quiz.html
-    |-- display_result.html
-    |-- index.html
-    |-- quiz.html
+## Attempting a Quiz
 
-1. __init__.py import the flask plugin from flask.ext.plugin and from views import blueprint now register blueprint with its url_prefix "/user_evaluation"
+- Click on the *Attempt* button and this will redirect you to a page displaying the list of available quizes. 
+- Select the quiz you want to attempt and start answering.
+- You cannot come back to the previous question, so be careful while answering.
 
-2. info.json will contain following schema
-	{
-		"identifier":"quiz",
-		"name":"Quiz",
-		"author":"author_name",
-		"license":"AGPLv3",
-		"description":"Quiz for user evaluation",
-		"version":"0.0.1"
-	}
+## Viweing user responses
 
-3. models.py consists schema for the different tables of the database there are following schemas
-A. quiz(int quiz_id primary key,name string) relationship with question and response schema
-B. question(question_id int primary key,int quiz_id foreign key of quiz schema,q_text string, option1 string, option2 string, option3 string, option4 string, answer string,category string) relationship with response
-C. response(response_id int primary key,quiz_id int foreign key from quiz, question_id int foreign key from question schema,response string,result boolean)
-
-4. views.py implemnets all the functionalities and help us to route through our application.
-it has following set of methods 
-A. index() to redirect @ home page
-B. path="user_evaluation/create_quiz" create_quiz() to redirect to a page where we can create a quiz. in this step we will create a quiz and one entry is created in the quiz schema.
-C. path="user_evaluation/addquestions" quiz_form() quiz name is stored using session in the above step now in that we will add questions to our existing quiz.
-D. path="user_evaluation/displayquiz" display_quiz() will show all the existing quiz to the user he can choose one from the set of quiz and solve the questions.
-E. path="user_evaluation/displayquestion" display_question() will display all the questions one by one.
-F.  path="user_evaluation/displayresult" display_result() will display the result in percentage marks.
-
-forms.py 
+- The creator of the quiz can view user responses.
+- The system will evaluate user performance according to the category and display respective statistics.
+- The user who has attempted the quiz only gets to see his or her score.
